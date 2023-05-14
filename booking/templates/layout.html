@@ -19,7 +19,7 @@
         <nav class="navbar bg-white navbar-white navbar-expand-lg shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand  cHover cGreen fs-2" href="{% url 'index' %}">
-                    GreenEarth AIR
+                    GreenEath 🌏
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                             <a class="nav-link active cHover" href="#contact">Contact Us</a>
                         </li>     
                         <li class="nav-item">
-                            {% comment %} <a class="nav-link active cHover" href="{% url 'booking' %}">Online Booking</a> {% endcomment %}
+                            <a class="nav-link active cHover" href="{% url 'booking' %}">Online Booking</a>
                         </li>                   
                         {% if user.is_authenticated %}
                         <!--Clinic Staff Link-->
@@ -52,7 +52,7 @@
                         </li>
                         {% else %}
                         <li class="nav-item me-3">
-                            {% comment %} <a class="nav-link active cHover" href="{% url 'register' %}">Sign in/Sign Up</a> {% endcomment %}
+                            <a class="nav-link active cHover" href="{% url 'register' %}">Sign in/Sign Up</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -94,7 +94,7 @@
                             <a href="tel: 12345678" class=""><span class="cBlue">Tel: 12345678</span></a>
                         </p>
                         <p>
-                            {% comment %} <a class="uLine cHover" href="{% url 'booking' %}" >Online Booking</a> {% endcomment %}
+                            <a class="uLine cHover" href="{% url 'booking' %}" >Online Booking</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -105,17 +105,17 @@
                         <h5 class="text-uppercase fw-bold mb-4 textGradient">
                             Services
                         </h5>
-                        <p>
-                            <a href="#!" class="uLine">AAA</a>
+                        {% comment %} <p>
+                            <a href="#!" class="uLine">Doctor care</a>
                         </p>
                         <p>
-                            <a href="#!" class="uLine">BBB</a>
+                            <a href="#!" class="uLine">Nursing care</a>
                         </p>
                         <p>
-                            <a href="#!" class="uLine">CCC</a>
+                            <a href="#!" class="uLine">Medical social services</a>
                         </p>
                         <p>
-                            <a href="#!" class="uLine">DDD</a>
+                            <a href="#!" class="uLine">Homemaker or basic assistance care</a> {% endcomment %}
                         </p>
                     </div>
                     <!-- Service links Regular -->
