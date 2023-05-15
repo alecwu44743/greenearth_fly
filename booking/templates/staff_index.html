@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+
+{% comment %} USER_TYPE_CHOICES = (
+  ('Crew - TA', 'Crew - TA'),
+  ('Crew - CA', 'Crew - CA'),
+  ('Crew - AP', 'Crew - AP'),
+  ('Crew - DP', 'Crew - DP'),
+  ('Crew - CP', 'Crew - CP'),
+  ('Crew - IC', 'Crew - IC'),
+  ('Pilot', 'Pilot'),
+  ('Office - DC', 'Office - DC'),
+  ('Office - FlightM', 'Office - FlightM'),
+) {% endcomment %}
+
+{% block body %}
+
+  <!--Hero 1 Start-->
+
+    <div class="bg bg-secondary text-dark pt-5 pb-5">
+      <div class="text-center  pt-5 pb-5">
+        {% if user.is_authenticated %}
+            {% if user.staffuserprofile.user_type == 'Crew - TA' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Trainee Attendant</h1>
+            {% elif user.staffuserprofile.user_type == 'Crew - CA' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Cabin Attendant</h1>
+            {% elif user.staffuserprofile.user_type == 'Crew - AP' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Assistant Purser</h1>
+            {% elif user.staffuserprofile.user_type == 'Crew - DP' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Deputy Purser</h1>
+            {% elif user.staffuserprofile.user_type == 'Crew - CP' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Chief Purser</h1>
+            {% elif user.staffuserprofile.user_type == 'Crew - IC' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Instructor</h1>
+            {% elif user.staffuserprofile.user_type == 'Pilot' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Pilot</h1>
+            {% elif user.staffuserprofile.user_type == 'Office - DC' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Daily Counter</h1>
+            {% elif user.staffuserprofile.user_type == 'Office - FlightM' %}
+                <h1 class="display-1 cGreen me-2 ms-2">Hello Flight Manager</h1>
+            {% endif %}
+        {% endif %}
+            <p class="fs-4 mt-3"></p>
+            <a type="button" class="btn btn-primary shadow  mt-5" href="{% url 'booking' %}">Online Booking</a>
+        </div>
+    </div>
+
+  <!--Hero 1 End-->
+
+{% endblock %}

@@ -6,6 +6,9 @@ from django.contrib import messages
 def index(request):
     return render(request, "index.html",{})
 
+def staff_index(request):
+    return render(request, "staff_index.html",{})
+
 def booking(request):
     #Calling 'validWeekday' Function to Loop days you want in the next 21 days:
     weekdays = validWeekday(22)
@@ -89,6 +92,12 @@ def userPanel(request):
     return render(request, 'userPanel.html', {
         'user':user,
         'appointments':appointments,
+    })
+    
+def staffInfo(request):
+    staff = request.user
+    return render(request, 'staffInfo.html', {
+        'staff':staff,
     })
 
 def userUpdate(request, id):

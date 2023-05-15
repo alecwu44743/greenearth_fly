@@ -1,0 +1,47 @@
+<title>🌏 Staff Sign Up</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+
+{% if user.is_authenticated and user.userprofile.user_type == 'Pessanger' %}
+  <h1 class="p-2 text-center mb-5 text-warning">You Are Already Signed In</h1>
+  {% comment %} 自動登出程式碼開始 {% endcomment %}
+  <script>
+      // 延遲 3 秒後自動登出
+      setTimeout(function() {
+          window.location.href = "{% url 'logout' %}";
+      }, 2000);
+  </script>
+  {% comment %} 自動登出程式碼結束 {% endcomment %}
+{% elif user.is_authenticated %}
+<h1 class="p-2 text-center mb-5 text-warning">Hey Staff! You Are Already Signed In</h1>
+<form class="p-2 text-center mb-5 text-warning" action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Staff Logout</button>
+</form>
+
+{% else %}
+
+
+<div class="bg-white fPersian">
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5">
+    <h1 class="text-black p-3 ">Sign Up</h1>
+<form method="POST" action="{% url 'staff_register' %}">
+    {% csrf_token %}
+
+       {{ form.as_p }}
+
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </br>
+        <label class="form-label fs-3 mt-5">Already Have A Staff Account?</label>
+        </br>
+        <a href="{% url 'staff_login' %}" class="btn btn-primary">Staff Sign in</a>
+</form>
+</div>
+<br/><br/><br/>
+</div>
+{% endif %}
+{% endblock %}

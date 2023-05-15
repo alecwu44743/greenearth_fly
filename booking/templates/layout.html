@@ -41,11 +41,21 @@
                             <a class="nav-link active cHover" href="{% url 'staffPanel' %}">Staff Panel</a>
                         </li> 
                         <li class="nav-item dropdown me-3 fs-5">
-                            <a class="nav-link active dropdown-toggle cHover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              User
-                            </a>
+                            {% if user.userprofile %}
+                                <a class="nav-link active dropdown-toggle cHover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                User
+                                </a>
+                            {% else %}
+                                <a class="nav-link active dropdown-toggle cHover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                myGreenEarth
+                                </a>
+                            {% endif %}
                             <ul class="dropdown-menu  border zNav">
-                              <li><a class="dropdown-item" href="{% url 'userPanel' %}">User Panel</a></li>
+                                {% if user.userprofile.user_type == 'Passenger' %}
+                                    <li><a class="dropdown-item" href="{% url 'userPanel' %}">User Panel</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'staffInfo' %}">Staff Info</a></li>
+                                {% endif %}
                               <li><hr class=""></li>
                               <li><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                             </ul>
@@ -105,18 +115,18 @@
                         <h5 class="text-uppercase fw-bold mb-4 textGradient">
                             Services
                         </h5>
+                        <p>
+                            <a href="{% url 'staff_login' %}" class="uLine">STAFF LOGIN</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'staff_register' %}" class="uLine">STAFF REGISTER</a>
+                        </p>
                         {% comment %} <p>
-                            <a href="#!" class="uLine">Doctor care</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="uLine">Nursing care</a>
-                        </p>
-                        <p>
                             <a href="#!" class="uLine">Medical social services</a>
                         </p>
                         <p>
-                            <a href="#!" class="uLine">Homemaker or basic assistance care</a> {% endcomment %}
-                        </p>
+                            <a href="#!" class="uLine">Homemaker or basic assistance care</a>
+                        </p> {% endcomment %}
                     </div>
                     <!-- Service links Regular -->
                   </div>

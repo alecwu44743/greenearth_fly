@@ -8,7 +8,11 @@
 {% block body %}
 
   <!--Hero 1 Start-->
-
+  {% if user.is_authenticated and user.userprofile.user_type != 'pessanger' %}
+    <script>
+      window.location.href = "{% url 'staff_index' %}";
+    </script>
+  {% else %}
     <div class="bg bg-secondary text-dark pt-5 pb-5">
         <div class="text-center  pt-5 pb-5">
             <h1 class="display-1 cGreen me-2 ms-2">GreenEarth AIR🌏</h1>
@@ -16,6 +20,7 @@
             <a type="button" class="btn btn-primary shadow  mt-5" href="{% url 'booking' %}">Online Booking</a>
         </div>
     </div>
+  {% endif %}
 
   <!--Hero 1 End-->
 
