@@ -18,7 +18,7 @@ def newFlight(request):
             flight_id = form.cleaned_data['flight_id']
             flight_date = form.cleaned_data['flight_date']
             airplane = form.cleaned_data['airplane']
-            aircraft = form.cleaned_data['aircraft']
+            aircraft_type = form.cleaned_data['aircraft_type']
             ship_no = form.cleaned_data['ship_no']
             flt_no = form.cleaned_data['flt_no']
             code_share = form.cleaned_data['code_share']
@@ -27,7 +27,7 @@ def newFlight(request):
             etd_utc = form.cleaned_data['etd_utc']
             eta_utc = form.cleaned_data['eta_utc']
             etd = form.cleaned_data['etd']
-            eta = form.cleaned_data['eta']
+            # eta = form.cleaned_data['eta']
             # schedule_hr = form.cleaned_data['schedule_hr']
             schedule_hr_h = form.cleaned_data['schedule_hr_h']
             schedule_hr_m = form.cleaned_data['schedule_hr_m']
@@ -44,11 +44,12 @@ def newFlight(request):
             CHD = form.cleaned_data['CHD']
             INF = form.cleaned_data['INF']
             crew_members = form.cleaned_data['crew_members']
+            created_by = form.cleaned_data['created_by']
             
             flight_profile, _ = Flight.objects.get_or_create(flight_id=flight_id)
             flight_profile.flight_date = flight_date
             flight_profile.airplane = airplane
-            flight_profile.aircraft = aircraft
+            flight_profile.aircraft_type = aircraft_type
             flight_profile.ship_no = ship_no
             flight_profile.flt_no = flt_no
             flight_profile.code_share = code_share
@@ -58,7 +59,7 @@ def newFlight(request):
             flight_profile.eta_utc = eta_utc
             flight_profile.etd = etd
             # flight_profile.schedule_hr = schedule_hr
-            flight_profile.eta = eta
+            # flight_profile.eta = eta
             flight_profile.schedule_hr_h = schedule_hr_h
             flight_profile.schedule_hr_m = schedule_hr_m
             flight_profile.fdp_hr_h = fdp_hr_h
@@ -72,13 +73,14 @@ def newFlight(request):
             flight_profile.CHD = CHD
             flight_profile.INF = INF
             flight_profile.crew_members = crew_members
+            flight_profile.created_by = request.user
             flight_profile.save()
             
             messages.success(request, "Flight Added!")
             return redirect('myGreenEarth')
     else:
         form = NewFlightsForm()
-        
+        form = NewFlightsForm(initial={'created_by': request.user})
     return render(request, 'authenticate/newFlight.html', {
         'form': form,
     })

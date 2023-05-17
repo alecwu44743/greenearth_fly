@@ -178,7 +178,7 @@ class Flight(models.Model):
 @receiver(pre_save, sender=Flight)
 def calculate_eta(sender, instance, **kwargs):
     # Get the ETD and flight duration from the instance
-    dep_time = instance.etd
+    dep_time = datetime.combine(datetime.today(), instance.etd)
     dep_utc = int(instance.etd_utc)
     arr_utc = int(instance.eta_utc)
     # flight_duration = instance.schedule_hr.total_seconds()

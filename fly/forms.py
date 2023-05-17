@@ -168,6 +168,12 @@ class NewFlightsForm(forms.ModelForm):
     
     crew_members = forms.IntegerField(label='Crew Members', initial=0, widget=forms.NumberInput(attrs={'class': 'form-control'}))
     
+    created_by = forms.ModelChoiceField(label='Created By',
+        queryset=User.objects.all(),
+        widget=forms.HiddenInput(),
+        required=False
+    )
+    
     class Meta:
         model = Flight
-        fields = ('flight_id', 'flt_no', 'flight_date', 'etd', 'schedule_hr_h', 'schedule_hr_m', 'airplane', 'aircraft_type', 'ship_no', 'code_share', 'etd_airport', 'eta_airport', 'etd_utc', 'eta_utc', 'fdp_hr_h', 'fdp_hr_m', 'RL_PL_SB', 'PE', 'EY', 'RL_PL_SB_booked', 'PE_booked', 'EY_booked', 'CHD', 'INF', 'crew_members')
+        fields = ('flight_id', 'flt_no', 'flight_date', 'etd', 'schedule_hr_h', 'schedule_hr_m', 'airplane', 'aircraft_type', 'ship_no', 'code_share', 'etd_airport', 'eta_airport', 'etd_utc', 'eta_utc', 'fdp_hr_h', 'fdp_hr_m', 'RL_PL_SB', 'PE', 'EY', 'RL_PL_SB_booked', 'PE_booked', 'EY_booked', 'CHD', 'INF', 'crew_members', 'created_by')
