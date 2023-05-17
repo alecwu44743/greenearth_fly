@@ -6,8 +6,8 @@ from django.contrib import messages
 def index(request):
     return render(request, "index.html",{})
 
-def staff_index(request):
-    return render(request, "staff_index.html",{})
+def myGreenEarth(request):
+    return render(request, "myGreenEarth.html",{})
 
 def booking(request):
     #Calling 'validWeekday' Function to Loop days you want in the next 21 days:

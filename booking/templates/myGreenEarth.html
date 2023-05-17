@@ -43,6 +43,8 @@
                 <h1 class="display-1 cGreen me-2 ms-2">Hello Daily Counter</h1>
             {% elif user.staffuserprofile.user_type == 'Office - FlightM' %}
                 <h1 class="display-1 cGreen me-2 ms-2">Hello Flight Manager</h1>
+                <p class="fs-4 mt-3"></p>
+                <a type="button" class="btn btn-primary shadow  mt-5" href="{% url 'newFlight' %}">Add Flight</a>
             {% endif %}
         {% endif %}
             <p class="fs-4 mt-3"></p>

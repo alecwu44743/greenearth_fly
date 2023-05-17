@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('staff_index', views.staff_index, name='staff_index'),
     path('booking', views.booking, name='booking'),
     path('booking-submit', views.bookingSubmit, name='bookingSubmit'),
     path('user-panel', views.userPanel, name='userPanel'),
@@ -11,5 +10,6 @@ urlpatterns = [
     path('user-update-submit/<int:id>', views.userUpdateSubmit, name='userUpdateSubmit'),
     path('staff-panel', views.staffPanel, name='staffPanel'),
     
+    path('myGreenEarth', views.myGreenEarth , name='myGreenEarth'),
     path('staff-info', views.staffInfo, name='staffInfo'),
 ]

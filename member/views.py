@@ -59,7 +59,7 @@ def register_user(request):
                 user_profile.level = level
                 user_profile.save()
                 messages.success(request, "Staff Sign Up Completed!")
-                return redirect('staff_index')
+                return redirect('myGreenEarth')
     else:
         form = RegisterUserForm()
     return render(request, 'authenticate/register_user.html', {
@@ -78,7 +78,7 @@ def staff_login(request):
                 user_type = user_profile.user_type
                 if user_type in ['Crew - TA', 'Crew - CA', 'Crew - AP', 'Crew - DP', 'Crew - CP', 'Crew - IC', 'Pilot', 'Office - DC', 'Office - FlightM']:
                     login(request, user)
-                    return redirect('staff_index')
+                    return redirect('myGreenEarth')
                 else:
                     # User does not have the required user_type, show error message
                     messages.error(request, "Invalid user type for login.")

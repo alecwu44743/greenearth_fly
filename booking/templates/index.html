@@ -10,7 +10,7 @@
   <!--Hero 1 Start-->
   {% if user.is_authenticated and user.userprofile.user_type != 'pessanger' %}
     <script>
-      window.location.href = "{% url 'staff_index' %}";
+      window.location.href = "{% url 'myGreenEarth' %}";
     </script>
   {% else %}
     <div class="bg bg-secondary text-dark pt-5 pb-5">
